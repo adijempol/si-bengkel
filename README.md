@@ -1,3 +1,5 @@
+# Sesuaikan dengan Environtment yang ada di project anda
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
