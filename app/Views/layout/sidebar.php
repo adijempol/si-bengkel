@@ -8,14 +8,6 @@
      <!-- Sidebar -->
      <div class="sidebar">
           <!-- Sidebar user (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-               <div class="image">
-                    <img src="<?= base_url() ?>/template/dist/img/brewok.png" class="img-circle elevation-2" alt="User Image">
-               </div>
-               <div class="info">
-                    <a href="#" class="d-block">Ach. Adi Kasyadi Fernando</a>
-               </div>
-          </div>
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -24,71 +16,27 @@
                with font-awesome or any other icon font library -->
                     <li class="nav-header">Data Master</li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="<?= base_url(); ?>/master" class="nav-link">
                               <i class="nav-icon fas fa-fw fa-toolbox"></i>
                               <p>
-                                   Stock Spareparts
-                                   <i class="right fas fa-angle-left"></i>
+                                   Spareparts
                               </p>
                          </a>
-                         <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Input Spareparts</p>
-                                   </a>
-                              </li>
-                         </ul>
+
                     </li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="<?= base_url(); ?>/master/mekanik" class="nav-link">
                               <i class="nav-icon fas fa-fw fa-user"></i>
                               <p>
-                                   Mekanik
+                                   Mechanic
                                    <!-- <span class="right badge badge-danger">New</span> -->
                               </p>
                          </a>
                     </li>
 
-                    <li class="nav-item">
-                         <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-fw fa-briefcase"></i>
-                              <p>
-                                   Stock Materials
-                                   <i class="right fas fa-angle-left"></i>
-                              </p>
-                         </a>
-                         <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Input Materials</p>
-                                   </a>
-                              </li>
-                              <!-- <li class="nav-item">
-                                   <a href="../charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                   </a>
-                              </li>
-                              <li class="nav-item">
-                                   <a href="../charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                   </a>
-                              </li>
-                              <li class="nav-item">
-                                   <a href="../charts/uplot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>uPlot</p>
-                                   </a>
-                              </li> -->
-                         </ul>
-                    </li>
-
                     <li class="nav-header">Data Customer</li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="<?= base_url(); ?>/customer" class="nav-link">
                               <i class="nav-icon fas fa-fw fa-file-invoice"></i>
                               <p>
                                    Customer SPK
@@ -97,7 +45,7 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="<?= base_url(); ?>/customer/spk" class="nav-link">
                               <i class="nav-icon fas fa-fw fa-file-contract"></i>
                               <p>
                                    Create SPK
@@ -105,48 +53,32 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-chart-pie"></i>
+                         <a href="<?= base_url(); ?>/customer/request" class="nav-link">
+                              <i class="nav-icon fas fa-fw fa-file-contract"></i>
                               <p>
                                    Request Order
-                                   <i class="right fas fa-angle-left"></i>
                               </p>
                          </a>
-                         <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Request Parts</p>
-                                   </a>
-                              </li>
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Request Materials</p>
-                                   </a>
-                              </li>
-
-                         </ul>
                     </li>
+
 
                     <li class="nav-header">History</li>
                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-fw fa-history"></i>
+                         <a href="<?= base_url(); ?>/history" class="nav-link">
+                              <i class="nav-icon fas fa-chart-pie"></i>
                               <p>
                                    History Record
-                                   <i class="right fas fa-angle-left"></i>
+
                               </p>
                          </a>
-                         <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                   <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Data Service</p>
-                                   </a>
-                              </li>
-
-                         </ul>
+                    </li>
+                    <li class="nav-item">
+                         <a href="<?= base_url(); ?>/home/logout" class="nav-link">
+                              <i class="nav-icon fas fa-sign-out-alt"></i>
+                              <p>
+                                   Logout
+                              </p>
+                         </a>
                     </li>
 
                </ul>

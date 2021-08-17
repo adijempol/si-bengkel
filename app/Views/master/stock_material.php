@@ -1,3 +1,6 @@
+<?= $this->extend('layout/wrapper'); ?>
+<?= $this->section('content'); ?>
+
 <div class="content-wrapper">
      <!-- Content Header (Page header) -->
      <section class="content-header">
@@ -56,3 +59,5 @@
                </div>
      </section>
 </div>
+
+<?= $this->endSection('content'); ?>

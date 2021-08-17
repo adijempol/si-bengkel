@@ -1,17 +1,13 @@
+<?= $this->extend('layout/wrapper'); ?>
+<?= $this->section('content'); ?>
 <div class="content-wrapper">
      <!-- Content Header (Page header) -->
      <section class="content-header">
           <div class="container-fluid">
                <div class="row mb-2">
                     <div class="col-sm-6">
-                         <h1>List Mekanik</h1>
+                         <h2 class="text-bold"><u>List Mechanic</u></h2>
                     </div>
-                    <!-- <div class="col-sm-6"> -->
-                    <!-- <ol class="breadcrumb float-sm-right">
-                              <li class="breadcrumb-item"><a href="#">Home</a></li>
-                              <li class="breadcrumb-item active">Simple Tables</li>
-                         </ol> -->
-                    <!-- </div> -->
                </div>
           </div><!-- /.container-fluid -->
      </section>
@@ -22,79 +18,64 @@
                <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#newModalMekanik">
                     Add New Mekanik
                </button>
+
+               <div class="flash-data" data-flashdata="<?= session()->getflashdata('flash'); ?>">
+
+               </div>
+
+               <?php if (session()->getFlashdata('flash')) : ?>
+                    <!-- <div class="alert alert-dismissible fade show alert-success col-md-4 d-flex justify-content-between " role="alert">
+                         <p>
+                              <?= session()->getFlashdata('pesan'); ?>
+                         </p>
+                         <button type="button" class="btn-closee ml-auto" data-dismiss="alert" aria-label="Close">X</button>
+                    </div> -->
+               <?php endif; ?>
+
                <div class="row">
                     <div class="col-md-8">
                          <div class="card">
-                              <!-- <div class="card-header">
-                                   <h3 class="card-title">Bordered Table</h3>
-                              </div> -->
                               <!-- /.card-header -->
                               <div class="card-body">
-                                   <table class="table table-bordered">
+                                   <table class="table table-bordered" id="list-mekanik">
                                         <thead>
                                              <tr>
                                                   <th style="width: 10px">#</th>
-                                                  <th>ID Mekanik</th>
-                                                  <th style="width: 30%;">Name</th>
-                                                  <th style="width: 20%;">Divisi</th>
-                                                  <th>Action</th>
+                                                  <th style="width: 25%; text-align: center;">ID Mekanik</th>
+                                                  <th style="width: 30%; text-align: center;">Name</th>
+                                                  <th style="width: 20%; text-align: center;">Division</th>
+                                                  <th style="width: 10%; text-align: center;">Action</th>
                                              </tr>
                                         </thead>
                                         <tbody>
-                                             <tr>
-                                                  <td>1.</td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td><span class="badge bg-warning">Edit</span>
-                                                       <span class="badge bg-danger">Delete</span>
-                                                  </td>
-                                             </tr>
-                                             <tr>
-                                                  <td>2.</td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td><span class="badge bg-warning">Edit</span>
-                                                       <span class="badge bg-danger">Delete</span>
-                                                  </td>
-                                             </tr>
-                                             <tr>
-                                                  <td>3.</td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td><span class="badge bg-warning">Edit</span>
-                                                       <span class="badge bg-danger">Delete</span>
-                                                  </td>
-                                             </tr>
-                                             <tr>
-                                                  <td>4.</td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td><span class="badge bg-warning">Edit</span>
-                                                       <span class="badge bg-danger">Delete</span>
-                                                  </td>
-                                             </tr>
+                                             <?php $i = 1 + (4 * ($currentPage - 1)); ?>
+                                             <?php foreach ($dataAllMekanik as $m) : ?>
+                                                  <tr>
+                                                       <td><?= $i++; ?></td>
+                                                       <td><?= $m['id_mekanik']; ?></td>
+                                                       <td><?= $m['name_mekanik']; ?></td>
+                                                       <td><?= $m['divisi']; ?></td>
+                                                       <td class="d-flex justify-content-center"><a href="<?= base_url('master/editMekanik/' . $m['id_mekanik']); ?>" class=" badge badge-pill badge-warning mr-2 tampil" data-toggle="modal" data-target="#newModalMekanik" data-bs-id="<?= $m['id_mekanik']; ?>">Edit</a>
+                                                            <a href="<?= base_url('master/deleteMekanik/' . $m['id_mekanik']); ?>" class="badge badge-pill badge-danger tombol-del">Delete</a>
+                                                       </td>
+                                                  </tr>
+                                             <?php endforeach; ?>
                                         </tbody>
                                    </table>
                               </div>
                               <!-- /.card-body -->
-                              <div class="card-footer clearfix">
-                                   <ul class="pagination pagination-sm m-0 float-right">
-                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                   </ul>
-                              </div>
+
+                              <!-- Memanggil method link dengan mengisi data dari contoller method mekanik -->
+                              <?= $pager->links('dataAllMekanik', 'orang_pagination') ?>
                          </div>
                     </div>
+               </div>
+          </div>
      </section>
 </div>
 <!-- /.card -->
+
+
 
 <!-- mekanik modal -->
 <div class="modal fade" id="newModalMekanik" tabindex="-1" aria-labelledby="newModalMekanikLabel" aria-hidden="true">
@@ -108,14 +89,14 @@
                </div>
 
                <div class="modal-body" id="modal-bodi">
-                    <form action="" method="POST">
-                         <input type="hidden" name="idMekanik" id="idMekanik">
+                    <form action="<?= base_url(); ?>/master/addMekanik" method="POST">
+                         <!-- <input type="hidden" name="idMekanik" id="idMekanik"> -->
                          <div class="form-group mb-3">
-                              <input type="text" class="form-control" id="mekanikId" name="mekanikId" placeholder="ID Mekanik" autocomplete="off">
+                              <input type="text" class="form-control" id="mekanikId" name="id_mekanik" placeholder="ID Mekanik" autocomplete="off">
                          </div>
 
                          <div class="form-group mb-3">
-                              <input type="text" class="form-control" id="nameMekanik" name="nameMekanik" placeholder="Name Mekanik" autocomplete="off">
+                              <input type="text" class="form-control" id="nameMekanik" name="name_mekanik" placeholder="Name Mekanik" autocomplete="off">
                          </div>
 
                          <div class="form-group mb-3">
@@ -131,43 +112,4 @@
           </div>
      </div>
 </div>
-
-<!-- <div id="newModalMekanik" class="modal fade">
-     <div class="modal-dialog">
-          <div class="modal-content">
-               <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    Hello world!
-               </div>
-               
-               <div class="modal-footer"><button type="button" class="btn btn-primary">OK</button></div>
-          </div>
-     </div>
-</div> -->
-
-<!-- sometime later, probably inside your on load event callback -->
-<!-- <script type="javascript">
-     $("#newModalMekanik").on("show", function() { // wire up the OK button to dismiss the modal when shown
-          $("#newModalMekanik a.btn").on("click", function(e) {
-               console.log("button pressed"); // just as an example...
-               $("#newModalMekanik").modal('hide'); // dismiss the dialog
-          });
-     });
-
-     $("#newModalMekanik").on("hide", function() { // remove the event listeners when the dialog is dismissed
-          $("#newModalMekanik a.btn").off("click");
-     });
-
-     $("#newModalMekanik").on("hidden", function() { // remove the actual elements from the DOM when fully hidden
-          $("#newModalMekanik").remove();
-     });
-
-     $("#newModalMekanik").modal({ // wire up the actual modal functionality and show the dialog
-          "backdrop": "static",
-          "keyboard": true,
-          "show": true // ensure the modal is shown immediately
-     });
-</script> -->
-
-
-<!-- end modal -->
+<?= $this->endSection('content'); ?>

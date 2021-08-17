@@ -13,10 +13,11 @@
      <!-- icheck bootstrap -->
      <link rel="stylesheet" href="<?= base_url(); ?>/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
      <!-- Theme style -->
-     <link rel="stylesheet" href="<?= base_url(); ?>/template/dist/css/adminlte.min.css">
+     <link rel="stylesheet" href="<?= base_url(); ?>/template/docs/assets/css/adminlte.min.css">
+     <link rel="stylesheet" href="<?= base_url(); ?>/template/docs/assets/css/style.css">
 </head>
 
-<body class="hold-transition login-page bg-gradient-navy">
+<body class="hold-transition login-page ">
      <div class="login-box">
           <!-- /.login-logo -->
           <div class="card card-outline card-dark">
@@ -24,23 +25,30 @@
                     <h4 class="h1 text-danger text-bold">D '<span class="garasi text-bold text-dark">G a r a g e</span></h4>
                </div>
                <div class="card-body">
-                    <form action="<?= base_url('master') ?>" method="post">
+                    <?php if (session()->getFlashdata('pesan')) : ?>
+                         <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                              <?= session()->getFlashdata('pesan'); ?>
+                         </div>
+                    <?php endif; ?>
+                    <form method="POST" action="<?= base_url('home/validateLogin'); ?>">
                          <div class="input-group mb-3">
-                              <input type="email" class="form-control" placeholder="Email">
+                              <input type="text" id="email" class="form-control" name="email" placeholder="Email" value="<?= old('email'); ?>">
                               <div class="input-group-append">
                                    <div class="input-group-text">
                                         <span class="fas fa-envelope"></span>
                                    </div>
                               </div>
                          </div>
+                         <p class=" text-danger ml-2 mt-1"> <?= $validation->getError('email'); ?></p>
                          <div class="input-group mb-3">
-                              <input type="password" class="form-control" placeholder="Password">
+                              <input type="password" class="form-control " id="password" name="password" placeholder="Password" value="<?= old('password'); ?>">
                               <div class="input-group-append">
                                    <div class="input-group-text">
                                         <span class="fas fa-lock"></span>
                                    </div>
                               </div>
                          </div>
+                         <p class=" text-danger ml-2 mt-1"> <?= $validation->getError('password'); ?></p>
                          <div class="row">
                               <!-- <div class="col-6"> -->
                               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
